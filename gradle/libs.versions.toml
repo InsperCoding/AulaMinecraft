@@ -1,8 +1,12 @@
 [versions]
 
-# Define the versions of the libraries you want to use
 spigot = "1.21.5-R0.1-SNAPSHOT"
 
 [libraries]
 
-spigot = { group = "org.spigotmc", name = "spigot", version = "spigot" }
+spigot-api = { group = "org.spigotmc", name = "spigot-api", version.ref = "spigot" }
+#spigot-full = { group = "org.spigotmc", name = "spigot", version.ref = "spigot" }
+
+[bundles]
+
+spigot = ["spigot-api"] #, "spigot-full"]
