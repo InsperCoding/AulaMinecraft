@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -23,15 +24,18 @@ public class PengListener implements Listener {
         onlineProfiles.put(profile.getID(), profile);
         
         profile.sendMessage("&aWelcome to the server, &6" + profile.getName() + "&a!");
+        
+        event.setJoinMessage(null);
     }
     
     @EventHandler
-    private void onPlayerQuit(@NotNull PlayerJoinEvent event) {
+    private void onPlayerQuit(@NotNull PlayerQuitEvent event) {
         Profile profile = onlineProfiles.remove(event.getPlayer().getUniqueId());
         
         if (profile != null) {
             Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&',
                     "&f" + profile.getName() + " &chas left the server!"));
         }
+        event.setQuitMessage(null);
     }
 }

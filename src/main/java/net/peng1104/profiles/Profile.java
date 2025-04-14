@@ -54,4 +54,27 @@ public class Profile {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
         }
     }
+    
+    public void sendTitle(@NotNull String title) {
+        sendTitle(title, "");
+    }
+    
+    public void sendTitle(@NotNull String title, @NotNull String subtitle) {
+        sendTitle(title, subtitle, 10, 70, 20);
+    }
+    
+    public void sendTitle(@NotNull String title, @NotNull String subtitle, int fadeIn, int stay, int fadeOut) {
+        Player player = getPlayer();
+        
+        if (player == null) {
+            return;
+        }
+        player.sendTitle(
+                ChatColor.translateAlternateColorCodes('&', title),
+                ChatColor.translateAlternateColorCodes('&', subtitle),
+                fadeIn,
+                stay,
+                fadeOut
+        );
+    }
 }
