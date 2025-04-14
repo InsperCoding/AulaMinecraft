@@ -1,24 +1,37 @@
 package net.peng1104;
 
-import net.peng1104.listener.PengListener;
+import lombok.Getter;
+import net.peng1104.listener.EntryListener;
+import net.peng1104.profiles.ProfileManager;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
+@Getter
 public class AulasInsperCode extends JavaPlugin {
+    
+    private ProfileManager profileManager;
     
     @Override
     public void onLoad() {
-        getServer().getConsoleSender().sendMessage("Loading InsperCodingPlugin...");
+        getServer().getPluginManager().registerEvents(profileManager = new ProfileManager(), this);
     }
     
     @Override
     public void onEnable() {
-        getServer().getConsoleSender().sendMessage("Plugin is now enabled!");
-        
-        getServer().getPluginManager().registerEvents(new PengListener(), this);
+        getServer().getPluginManager().registerEvents(new EntryListener(this), this);
     }
     
     @Override
     public void onDisable() {
-       getServer().getConsoleSender().sendMessage("Plugin is now disabled!");
+        //pass
+    }
+    
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
+            @NotNull String label, @NotNull String[] args) {
+        
+        return false;
     }
 }
