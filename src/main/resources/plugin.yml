@@ -1,6 +1,8 @@
-main: net.peng1104.InsperCodingPlugin
-name: InsperCodingPlugin
-version: 1.0.0
+main: ${group}.${mainClass}
+name: ${name}
+version: ${version}
 api-version: 1.13
-author: peng1104
-description: Plugin exemplo para as aulas de Minecraft do Insper Coding
+authors: [${authors}]
+description: ${description}
+depend: [${depend}]
+softdepend: [${softdepend}]

@@ -3,7 +3,7 @@ package net.peng1104;
 import net.peng1104.listener.PengListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class InsperCodingPlugin extends JavaPlugin {
+public class AulasInsperCode extends JavaPlugin {
     
     @Override
     public void onLoad() {
