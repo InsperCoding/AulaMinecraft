@@ -69,6 +69,10 @@ tasks {
         into("${project.rootDir}/Server/plugins")
     }
 
+    shadowJar {
+        archiveFileName.set("${project.name}.jar")
+    }
+
     build {
         dependsOn(copyJarToServer)
     }
@@ -81,8 +85,10 @@ tasks {
             "mainClass" to project.properties["mainClass"],
             "authors" to project.properties["authors"],
             "description" to project.properties["description"],
+            "website" to project.properties["website"],
             "depend" to project.properties["depend"],
             "softDepend" to project.properties["softDepend"],
+            "loadBefore" to project.properties["loadBefore"]
         )
         inputs.properties(props)
 

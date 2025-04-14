@@ -2,7 +2,10 @@ main: ${group}.${mainClass}
 name: ${name}
 version: ${version}
 api-version: 1.13
+load: STARTUP
 authors: [${authors}]
 description: ${description}
+website: ${website}
 depend: [${depend}]
-softdepend: [${softdepend}]
+softdepend: [${softDepend}]
+loadbefore: [${loadBefore}]

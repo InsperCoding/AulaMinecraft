@@ -1,2 +1,2 @@
-rootProject.name = "InsperCoding"
+rootProject.name = "InsperCode"
 
