@@ -13,6 +13,7 @@ import net.luckperms.api.context.ImmutableContextSet;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 import net.luckperms.api.query.QueryOptions;
+import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -141,5 +142,14 @@ public class PlayerProfile implements Profile {
         }
         return user.getCachedData().getPermissionData(context).checkPermission(permission)
                 .asBoolean();
+    }
+    
+    @Override
+    public void setGameMode(@NotNull GameMode mode) {
+        Player player = getPlayer();
+        
+        if (player != null) {
+            player.setGameMode(mode);
+        }
     }
 }
