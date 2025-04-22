@@ -3,9 +3,13 @@ name: ${name}
 version: ${version}
 api-version: 1.13
 load: STARTUP
-authors: [${authors}]
+authors: [ ${ authors } ]
 description: ${description}
 website: ${website}
-depend: [${depend}]
-softdepend: [${softDepend}]
-loadbefore: [${loadBefore}]
+depend: [ ${ depend } ]
+softdepend: [ ${ softDepend } ]
+loadbefore: [ ${ loadBefore } ]
+
+commands:
+  gamemode:
+    aliases: [ gm, gm0, gm1, gm2, gm3, gms, gmc, gma, gme ]
