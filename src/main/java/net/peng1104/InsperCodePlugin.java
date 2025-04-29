@@ -2,9 +2,13 @@ package net.peng1104;
 
 import lombok.Getter;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import net.peng1104.commands.CommandGameMode;
+import net.peng1104.commands.CommandManager;
 import net.peng1104.listener.EntryListener;
 import net.peng1104.profiles.ProfileManager;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class InsperCodePlugin extends JavaPlugin {
@@ -14,23 +18,41 @@ public class InsperCodePlugin extends JavaPlugin {
     
     private ProfileManager profileManager;
     
+    private CommandManager commandManager;
+    
     private BukkitAudiences adventureManager;
     
     @Override
     public void onLoad() {
-        adventureManager = BukkitAudiences.create(instance = this);
+        instance = this;
+        
+        adventureManager = BukkitAudiences.create(instance);
+        profileManager = new ProfileManager();
+        commandManager = new CommandManager();
     }
     
     @Override
     public void onDisable() {
-        //pass
+        commandManager.disable();
     }
     
     @Override
     public void onEnable() {
-        getServer().getPluginManager()
-                .registerEvents(profileManager = new ProfileManager(this), this);
-        
-        getServer().getPluginManager().registerEvents(new EntryListener(this), this);
+        registerListeners();
+        createCommands();
+    }
+    
+    private void registerListeners() {
+        registerListener(profileManager);
+        registerListener(commandManager);
+        registerListener(new EntryListener(this));
+    }
+    
+    private void createCommands() {
+        new CommandGameMode().register();
+    }
+    
+    public void registerListener(@NotNull Listener listener) {
+        getServer().getPluginManager().registerEvents(listener, this);
     }
 }

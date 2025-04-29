@@ -16,6 +16,7 @@ spigot = "1.21.5-R0.1-SNAPSHOT"
 
 # Compatibility Libraries
 luckperms = "5.4"
+protocolLib = "5.3.0"
 
 [plugins]
 # Java
@@ -45,6 +46,7 @@ adventure-platform = { group = "net.kyori", name = "adventure-platform-bukkit", 
 
 # Plugins
 luckperms = { group = "net.luckperms", name = "api", version.ref = "luckperms" }
+protocolLib = {group = "com.comphenix.protocol", name = "ProtocolLib", version.ref = "protocolLib"}
 
 [bundles]
 

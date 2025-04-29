@@ -1,7 +1,7 @@
 package net.peng1104.profiles;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import net.peng1104.InsperCodePlugin;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -19,11 +19,11 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class ProfileManager implements Listener {
     
     @Getter
-    private final InsperCodePlugin plugin;
+    private final InsperCodePlugin plugin = InsperCodePlugin.getInstance();
     
     private final Map<UUID, PlayerProfile> onlineProfiles = new ConcurrentHashMap<>();
     

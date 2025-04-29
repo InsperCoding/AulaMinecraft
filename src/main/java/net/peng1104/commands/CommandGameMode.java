@@ -1,7 +1,6 @@
 package net.peng1104.commands;
 
 import net.kyori.adventure.text.Component;
-import net.peng1104.InsperCodePlugin;
 import net.peng1104.profiles.Profile;
 import org.bukkit.GameMode;
 import org.jetbrains.annotations.NotNull;
@@ -10,13 +9,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 
-public class CommandGamemode extends BaseCommand {
+public class CommandGameMode extends Command {
     
     private final List<String> gamemodeNames = List.of("0", "1", "2", "3", "survival", "creative",
             "adventure", "spectator");
     
-    public CommandGamemode(@NotNull InsperCodePlugin plugin) {
-        super(plugin, "gamemode", "gm", "gm0", "gm1", "gm2", "gm3", "gms", "gma", "gmc", "gme");
+    public CommandGameMode() {
+        super("gamemode", false, "gm", "gm0", "gm1", "gm2", "gm3", "gms", "gma", "gmc",
+                "gme");
     }
     
     @Override
